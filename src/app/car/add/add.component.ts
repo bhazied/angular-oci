@@ -33,7 +33,7 @@ export class AddComponent implements OnInit {
     }
     let data = this.form.value;
     console.log(data);
-    this.service.addCar().subscribe(response => {
+    this.service.addCar(data).subscribe(response => {
       this.newCar = response;
     });
   }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-
+import { environment } from  '../../environments/environment';
 @Injectable(
   {
     providedIn : 'root'
@@ -10,7 +10,7 @@ import { catchError, map } from 'rxjs/operators';
 )
 export class CarService {
 
-  private baseurl = "http://localhost:3300";
+  private baseurl = environment.apiUrl;
   constructor(private http: HttpClient) { }
 
   getCars() : Observable<any> {
@@ -20,11 +20,11 @@ export class CarService {
     );
   }
 
-  addCar() : Observable<any> {
+  addCar(car: any) : Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-    return this.http.post(this.baseurl+'/cars', {}, httpOptions)
+    return this.http.post(this.baseurl+'/cars', car, httpOptions)
     .pipe(
       catchError(this.handleError('addCar', []))
     );

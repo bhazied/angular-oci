@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CarRoutingModule,
     ReactiveFormsModule, 
     FormsModule
-  ]
+  ],
+  providers: []
 })
 export class CarModule { }
